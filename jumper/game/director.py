@@ -7,6 +7,7 @@ from game.puzzle import Puzzle
     https://byui-cse.github.io/cse210-course-competency/encapsulation/materials/jumper-specification.html
 """
 
+
 class Director:
     """A person who directs the game. 
 
@@ -34,7 +35,7 @@ class Director:
         for i in self._word:
             self._word_list.append(i)
             self._show_word.append("_")
-            
+
     def start_game(self):
         """Starts the game by running the main game loop.
 
@@ -45,7 +46,7 @@ class Director:
             self._show_board()
             self._get_inputs()
             self._do_updates()
-            
+
         self._do_outputs()
 
     def _show_board(self):
@@ -59,9 +60,8 @@ class Director:
             print("   O\n  /|\\\n  / \\")
             print("\n^^^^^^^")
 
-
     def _get_inputs(self):
-        """Update this comment
+        """This function is when the user type one letter to guess the hiden word
 
         Args:
             self (Director): An instance of Director.
@@ -75,17 +75,19 @@ class Director:
             self (Director): An instance of Director.
         """
         if self._letter in self._word_list:
-            for i in range(1,self._word_list.count(self._letter)+1):
+            for i in range(1, self._word_list.count(self._letter)+1):
                 index = self._word_list.index(self._letter)
                 self._show_word[index] = self._letter
                 self._word_list[index] = "_"
-        else: self._wrong_guesses += 1
+
+        else:
+            self._wrong_guesses += 1
 
         if self._wrong_guesses >= 5 or "_" not in self._show_word:
             self._is_playing = False
 
     def _do_outputs(self):
-        """Update this comment
+        """This method is when the gamer lose the opportunities to guess
 
         Args:
             self (Director): An instance of Director.
@@ -94,11 +96,11 @@ class Director:
             print()
             for i in self._show_word:
                 print(f"{i}", end=" ")
-            
+
             print("\n\n")
             print("   X\n  /|\\\n  / \\")
             print("\n^^^^^^^")
-            
+
         else:
             print()
             for i in self._show_word:
