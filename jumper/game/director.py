@@ -81,7 +81,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self._letter = input('Type one letter to guess the word: ').lower()
+        valid = False
+        while not valid:
+
+            self._letter = input('Type one letter (a-z): ').lower()
+            valid = "a" <= self._letter <= "z" and len(self._letter) == 1
+            if not valid:
+                print("Error the letter should be from a to z. Type only one letter")
 
     def _do_updates(self):
         """This method change the "_" by the letters guessed, keep one count
@@ -99,7 +105,10 @@ class Director:
         else:
             self._wrong_guesses += 1
 
-        if self._wrong_guesses >= 5 or "_" not in self._show_word:
+        if self._wrong_guesses >= 5:
+            self._is_playing = False
+
+        elif "_" not in self._show_word:
             self._is_playing = False
 
     def _do_outputs(self):
@@ -116,6 +125,7 @@ class Director:
 
             print("\n\n")
             print("   X\n  /|\\\n  / \\")
+            print("Sorry, you lose the game")
             print("\n^^^^^^^")
 
         else:
@@ -126,4 +136,8 @@ class Director:
             print("\n\n")
             self._parachute.chute(self._wrong_guesses)
             print("   O\n  /|\\\n  / \\")
+
+            if "_" not in self._show_word:
+                print("Congrats, You win the game!!")
+
             print("\n^^^^^^^")
