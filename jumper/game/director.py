@@ -16,6 +16,13 @@ class Director:
     Attributes:
         is_playing (boolean): Whether or not to keep playing.
         terminal_service: For getting and displaying information on the terminal.
+        _letter (string): The letter typed by the user 
+        _wrong_guesses (int): Do the count of the wrongs when the gamer try to guess the word
+        _parachute: Draw the parachute and keep track the lifes
+        _puzzle: Get one word to guess from the list 
+        _word: This variable save the word obtained by Puzzle class
+        _show_word : one list of every letter of the chosen word 
+        _word_list: one list with the "_" dashes when the letters are not guessed
     """
 
     def __init__(self):
@@ -32,6 +39,7 @@ class Director:
         self._word = self._puzzle.get_word()
         self._show_word = []
         self._word_list = []
+
         for i in self._word:
             self._word_list.append(i)
             self._show_word.append("_")
@@ -50,6 +58,13 @@ class Director:
         self._do_outputs()
 
     def _show_board(self):
+        """This function is when the game start, shows the board of the word to guess, 
+        and draw the parachute. 
+
+        Args:
+            self (Director): An instance of Director.
+        """
+
         if self._is_playing:
             print()
             for i in self._show_word:
@@ -69,7 +84,8 @@ class Director:
         self._letter = input('Type one letter to guess the word: ').lower()
 
     def _do_updates(self):
-        """Update this comment
+        """This method change the "_" by the letters guessed, keep one count
+        of the wrongs guessed and keep playing or end it
 
         Args:
             self (Director): An instance of Director.
@@ -87,7 +103,8 @@ class Director:
             self._is_playing = False
 
     def _do_outputs(self):
-        """This method is when the gamer lose the opportunities to guess
+        """This method shows the parachute when the gamer lose the opportunities to guess or when is with life yet
+
 
         Args:
             self (Director): An instance of Director.
