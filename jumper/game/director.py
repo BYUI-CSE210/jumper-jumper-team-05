@@ -25,6 +25,7 @@ class Director:
         _word: This variable save the word obtained by Puzzle class
         _show_word : one list of every letter of the chosen word 
         _word_list: one list with the "_" dashes when the letters are not guessed
+        _terminal_service: This argument let have inputs and outputs in the terminal.
     """
 
     def __init__(self):
