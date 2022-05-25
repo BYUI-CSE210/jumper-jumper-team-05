@@ -1,5 +1,7 @@
 from game.parachute import Parachute
 from game.puzzle import Puzzle
+from game.terminal_service import TerminalService
+from game.bcolors import Bcolors
 
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
@@ -74,6 +76,7 @@ class Director:
             self._parachute.chute(self._wrong_guesses)
             print("   O\n  /|\\\n  / \\")
             print("\n^^^^^^^")
+            print(f"{Bcolors.WARNING}\n^^^^^^^{Bcolors.ENDC}")
 
     def _get_inputs(self):
         """This function is when the user type one letter to guess the hiden word
@@ -127,6 +130,7 @@ class Director:
             print("   X\n  /|\\\n  / \\")
             print("Sorry, you lose the game")
             print("\n^^^^^^^")
+            print(f"{Bcolors.WARNING}\n^^^^^^^{Bcolors.ENDC}")
 
         else:
             print()
@@ -141,3 +145,4 @@ class Director:
                 print("Congrats, You win the game!!")
 
             print("\n^^^^^^^")
+            print(f"{Bcolors.WARNING}\n^^^^^^^{Bcolors.ENDC}")
