@@ -1,6 +1,7 @@
 from game.parachute import Parachute
 from game.puzzle import Puzzle
 
+
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
     Rules listed and your program meets all of the Requirements found on 
@@ -39,6 +40,7 @@ class Director:
         self._word = self._puzzle.get_word()
         self._show_word = []
         self._word_list = []
+        self._terminal_service = TerminalService()
 
         for i in self._word:
             self._word_list.append(i)

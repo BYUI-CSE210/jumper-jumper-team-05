@@ -3,7 +3,7 @@ class Parachute:
     """
 
     def __init__(self):
-        """Constructs a new Parachute.
+        """Constructs a new Parachute
 
         Args:
             self (Parachute): an instance of Parachute.
