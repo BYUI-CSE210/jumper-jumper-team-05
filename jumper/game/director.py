@@ -1,5 +1,6 @@
 from game.parachute import Parachute
 from game.puzzle import Puzzle
+from game.terminal_service import TerminalService
 
 
 """
@@ -74,8 +75,8 @@ class Director:
 
             print("\n\n")
             self._parachute.chute(self._wrong_guesses)
-            print("   O\n  /|\\\n  / \\")
-            print("\n^^^^^^^")
+            self._terminal_service.write_text("   O\n  /|\\\n  / \\")
+            self._terminal_service.write_text("\n^^^^^^^")
 
     def _get_inputs(self):
         """This function is when the user type one letter to guess the hiden word
@@ -85,11 +86,12 @@ class Director:
         """
         valid = False
         while not valid:
-
-            self._letter = input('Type one letter (a-z): ').lower()
+            self._letter = self._terminal_service.read_text(
+                'Type one letter (a-z): ').lower()
             valid = "a" <= self._letter <= "z" and len(self._letter) == 1
             if not valid:
-                print("Error the letter should be from a to z. Type only one letter")
+                self._terminal_service.write_text(
+                    "Error the letter should be from a to z. Type only one letter")
 
     def _do_updates(self):
         """This method change the "_" by the letters guessed, keep one count
@@ -121,25 +123,26 @@ class Director:
             self (Director): An instance of Director.
         """
         if self._wrong_guesses >= 5:
-            print()
+            self._terminal_service.write_text("")
             for i in self._show_word:
                 print(f"{i}", end=" ")
 
-            print("\n\n")
-            print("   X\n  /|\\\n  / \\")
-            print("Sorry, you lose the game")
-            print("\n^^^^^^^")
+            self._terminal_service.write_text("\n\n")
+            self._terminal_service.write_text("   X\n  /|\\\n  / \\")
+            self._terminal_service.write_text("Sorry, you lose the game")
+            self._terminal_service.write_text("\n^^^^^^^")
 
         else:
-            print()
+            self._terminal_service.write_text("")
             for i in self._show_word:
                 print(f"{i}", end=" ")
 
-            print("\n\n")
+            self._terminal_service.write_text("\n\n")
             self._parachute.chute(self._wrong_guesses)
-            print("   O\n  /|\\\n  / \\")
+            self._terminal_service.write_text("   O\n  /|\\\n  / \\")
 
             if "_" not in self._show_word:
-                print("Congrats, You win the game!!")
+                self._terminal_service.write_text(
+                    "Congrats, You win the game!!")
 
-            print("\n^^^^^^^")
+            self._terminal_service.write_text("\n^^^^^^^")
