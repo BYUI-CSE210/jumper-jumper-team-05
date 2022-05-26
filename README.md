@@ -19,6 +19,9 @@ root                    (project root folder)
 +-- README.md           (general info)
 ```
 
+## Additional code
+Bcolors class added to add color to the extra line for parachute print(f"{Bcolors.WARNING}\n^^^^^^^{Bcolors.ENDC}")
+
 ## Required Technologies
 * Python 3.8.0
 
