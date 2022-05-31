@@ -18,6 +18,8 @@ root                    (project root folder)
   +-- __main__.py       (program entry point)
 +-- README.md           (general info)
 ```
+## Extra cretits 
+ We add some extra code to validate the inputs of the user, the gamer should type one letter between a to z. If the gamer type two letters the game show error message and propmt to type only one letter.
 
 ## Required Technologies
 * Python 3.8.0

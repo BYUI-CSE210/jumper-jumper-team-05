@@ -1,5 +1,10 @@
 class Parachute:
     """This will display the parachute and keep track of life.
+
+
+    Attributes:
+            _missing_pieces (int): every number is one lose life.
+            _pieces(list): One list of all the pieces for the above part of parachute.
     """
 
     def __init__(self):
@@ -8,9 +13,6 @@ class Parachute:
         Args:
             self (Parachute): an instance of Parachute.
 
-        Attributes:
-            _missing_pieces (int): every number is one lose life.
-            _pieces(list): One list of all the pieces for the above part of parachute.
 
         """
         self._missing_pieces = 0
