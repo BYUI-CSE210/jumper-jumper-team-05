@@ -1,10 +1,10 @@
 class TerminalService:
     """A service that handles terminal operations.
-    
+
     The responsibility of a TerminalService is to provide input and output operations for the 
     terminal.
     """
-     
+
     def read_text(self, prompt):
         """Gets text input from the terminal. Directs the user with the given prompt.
 
@@ -28,7 +28,7 @@ class TerminalService:
             float: The user's input as a number.
         """
         return float(input(prompt))
-        
+
     def write_text(self, text):
         """Displays the given text on the terminal. 
 
